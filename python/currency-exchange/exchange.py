@@ -166,14 +166,4 @@ def exchangeable_value(budget, exchange_rate, spread, denomination):
     number_of_bills = get_number_of_bills(budget, denomination)
 
     # Find the max value each bills
-    result = int(number_of_bills * denomination)
-
-    print(result)
-    # return result
-
-
-exchangeable_value(100000, 10.61, 10, 1)            # Pass      # 8568
-exchangeable_value(1500, 0.84, 25, 40)              # Pass      # 1400
-exchangeable_value(470000, 1050, 30, 10000000000)   # Pass      # 0
-exchangeable_value(470000, 0.00000009, 30, 700)     # Pass      # 4017094016600
-exchangeable_value(425.33, 0.0009, 30, 700)         # Pass      # 363300
+    return int(number_of_bills * denomination)
