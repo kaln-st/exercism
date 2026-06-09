@@ -9,10 +9,11 @@ of a module and its functions and/or classes.
 
 
 #TODO (student): define your EXPECTED_BAKE_TIME (required) and PREPARATION_TIME (optional) constants below.
-
+EXPECTED_BAKE_TIME = 40
+PREPARATION_TIME = 2
 
 #TODO (student): Remove 'pass' and complete the 'bake_time_remaining()' function below.
-def bake_time_remaining():
+def bake_time_remaining(actual_minutes):
     """Calculate the bake time remaining.
 
     Parameters:
@@ -25,19 +26,43 @@ def bake_time_remaining():
     an argument and returns how many minutes the lasagna still needs to bake
     based on the `EXPECTED_BAKE_TIME`.
     """
-
-    pass
+    return EXPECTED_BAKE_TIME - actual_minutes
+    
 
 
 #TODO (student): Define the 'preparation_time_in_minutes()' function below.
 # To avoid the use of magic numbers (see: https://en.wikipedia.org/wiki/Magic_number_(programming)), you should define a PREPARATION_TIME constant.
 # You can do that on the line below the 'EXPECTED_BAKE_TIME' constant.
 # This will make it easier to do calculations, and make changes to your code.
+def preparation_time_in_minutes(number_of_layers):
+    """
 
+    Calculate preparation time in minutes
+    
+    Parameters:
+        number_of_layers (int): The number of layers added to the lasagna.
 
+    Returns:
+        int: how many minutes you would spend making them.    
+        
+    """
+    return number_of_layers * PREPARATION_TIME
 
 #TODO (student): define the 'elapsed_time_in_minutes()' function below.
+def elapsed_time_in_minutes(number_of_layers, elapsed_bake_time):
+    """
+    Calculate total elapsed time (prepping + baking) in minutes
 
+    Parameters:
+        number_of_layers (int): The number of layers added to the lasagna.
+        elapsed_bake_time (int): The number of minutes the lasagna has spent baking in the oven already.
+    
+    Return:
+        int: The total minutes you have been in the kitchen cooking.
+        
+    """
+
+    return preparation_time_in_minutes(number_of_layers) + elapsed_bake_time
 
 
 # TODO (student): Remember to go back and add docstrings to all your functions
