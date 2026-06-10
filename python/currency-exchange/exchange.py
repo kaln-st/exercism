@@ -11,7 +11,7 @@ def exchange_money(budget, exchange_rate):
     """Calculate estimated value after exchange.
 
     Parameters:
-        budget (float): Tthe amount of money you are planning to exchange.
+        budget (float): The amount of money you are planning to exchange.
         exchange_rate (float): The unit value of the foreign currency.
 
     Returns:
@@ -28,7 +28,7 @@ def exchange_money(budget, exchange_rate):
 
     """
 
-    pass
+    return budget / exchange_rate
 
 
 def get_change(budget, exchanging_value):
@@ -53,7 +53,7 @@ def get_change(budget, exchanging_value):
 
     """
 
-    pass
+    return budget - exchanging_value
 
 
 def get_value_of_bills(denomination, number_of_bills):
@@ -77,7 +77,7 @@ def get_value_of_bills(denomination, number_of_bills):
 
     """
 
-    pass
+    return int(denomination * number_of_bills)
 
 
 def get_number_of_bills(amount, denomination):
@@ -97,12 +97,12 @@ def get_number_of_bills(amount, denomination):
         >>> get_number_of_bills(35.16, 10)
         3
 
-    This function calcluates and returns the number pf currency units (bills) that can
+    This function calcluates and returns the number of currency units (bills) that can
     be obtained from the given amount. Whole bills only - no fractioal amounts.
 
     """
 
-    pass
+    return int(amount / denomination)
 
 
 def get_leftover_of_bills(amount, denomination):
@@ -127,7 +127,7 @@ def get_leftover_of_bills(amount, denomination):
 
     """
 
-    pass
+    return amount % denomination
 
 
 def exchangeable_value(budget, exchange_rate, spread, denomination):
@@ -156,4 +156,24 @@ def exchangeable_value(budget, exchange_rate, spread, denomination):
     determining the exchange rate plus the spread.
     """
 
-    pass
+    # Calculate actual exchange rate
+    exchange_rate += exchange_rate * spread / 100
+
+    # Calculate new budget after exchange rate changed.
+    budget = exchange_money(budget, exchange_rate)
+
+    # Find the number of bills
+    number_of_bills = get_number_of_bills(budget, denomination)
+
+    # Find the max value each bills
+    result = int(number_of_bills * denomination)
+
+    print(result)
+    # return result
+
+
+exchangeable_value(100000, 10.61, 10, 1)            # Pass      # 8568
+exchangeable_value(1500, 0.84, 25, 40)              # Pass      # 1400
+exchangeable_value(470000, 1050, 30, 10000000000)   # Pass      # 0
+exchangeable_value(470000, 0.00000009, 30, 700)     # Pass      # 4017094016600
+exchangeable_value(425.33, 0.0009, 30, 700)         # Pass      # 363300
