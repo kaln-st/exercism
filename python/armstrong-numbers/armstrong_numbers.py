@@ -19,16 +19,13 @@ def is_armstrong_number(number):
     if number < 0: raise ValueError("Number should be a positive number!")
 
     # 3. Find the exponent
-    numbers = [] # Array of numbers split from number parameter
-    for num in str(number):
-        numbers.append(int(num))
-
+    numbers = str(number) # Convert number (int) to number (string). And assign to numbers
     exponent = len(numbers)
 
     # 4. Calculate opposite of armstrong number
     temp_number = 0
     for num in numbers:
-        temp_number += num ** exponent
+        temp_number += int(num) ** exponent
 
     # 5. Check if number is armstrong number or not
     return number == temp_number
